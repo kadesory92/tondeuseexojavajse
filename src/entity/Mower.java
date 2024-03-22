@@ -44,13 +44,6 @@ public class Mower {
         };
     }
 
-    
-	/*
-	 * private void moveForward(Lawn lawn) { switch (orientation) { case 'N': if (y
-	 * < lawn.getMaxY()) y++; break; case 'E': if (x < lawn.getMaxX()) x++; break;
-	 * case 'S': if (y > 0) y--; break; case 'W': if (x > 0) x--; break; } }
-	 */
-    
     private void moveForward(Lawn lawn) {
         switch (orientation) {
             case 'N' -> { if (y < lawn.getMaxY()) y++; }
