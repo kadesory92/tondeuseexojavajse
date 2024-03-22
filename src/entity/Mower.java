@@ -12,12 +12,6 @@ public class Mower {
     }
 
     public void executeInstructions(String instructions, Lawn lawn) {
-		/*
-		 * for (char instruction : instructions.toCharArray()) { if (instruction == 'G')
-		 * { rotateLeft(); } else if (instruction == 'D') { rotateRight(); } else if
-		 * (instruction == 'A') { moveForward(lawn); } }
-		 */
-    	
     	instructions.chars()
         .mapToObj(instruction -> (char) instruction)
         .forEach(instruction -> {
@@ -29,12 +23,6 @@ public class Mower {
         });
 
     }
-
-	/*
-	 * private void rotateLeft() { switch (orientation) { case 'N': orientation =
-	 * 'W'; break; case 'E': orientation = 'N'; break; case 'S': orientation = 'E';
-	 * break; case 'W': orientation = 'S'; break; } }
-	 */
     
     private void rotateLeft() {
         orientation = switch (orientation) {
@@ -45,13 +33,6 @@ public class Mower {
             default -> throw new IllegalArgumentException("Orientation invalide: " + orientation);
         };
     }
-
-
-	/*
-	 * private void rotateRight() { switch (orientation) { case 'N': orientation =
-	 * 'E'; break; case 'E': orientation = 'S'; break; case 'S': orientation = 'W';
-	 * break; case 'W': orientation = 'N'; break; } }
-	 */
 
     private void rotateRight() {
         orientation = switch (orientation) {
