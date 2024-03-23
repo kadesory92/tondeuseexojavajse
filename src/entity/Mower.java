@@ -1,5 +1,7 @@
 package entity;
 
+import exception.OrientationInvlidException;
+
 public class Mower {
 	private int x;
     private int y;
@@ -42,7 +44,7 @@ public class Mower {
             case 'E' -> 'N';
             case 'S' -> 'E';
             case 'W' -> 'S';
-            default -> throw new IllegalArgumentException("Orientation invalide: " + orientation);
+            default -> throw new OrientationInvlidException("Orientation invalide: " + orientation);
         };
     }
 
@@ -52,7 +54,7 @@ public class Mower {
             case 'E' -> 'S';
             case 'S' -> 'W';
             case 'W' -> 'N';
-            default -> throw new IllegalArgumentException("Orientation invalide: " + orientation);
+            default -> throw new OrientationInvlidException("Orientation invalide: " + orientation);
         };
     }
 
@@ -62,7 +64,7 @@ public class Mower {
             case 'E' -> { if (x < lawn.getMaxX()) x++; }
             case 'S' -> { if (y > 0) y--; }
             case 'W' -> { if (x > 0) x--; }
-            default -> throw new IllegalArgumentException("Orientation invalide: " + orientation);
+            default -> throw new OrientationInvlidException("Orientation invalide: " + orientation);
         };
         
         x = Math.min(Math.max(x, 0), lawn.getMaxX());
