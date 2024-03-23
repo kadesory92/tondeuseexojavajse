@@ -15,5 +15,9 @@ public class Lawn {
 
     public int getMaxY() {
         return maxY;
-    }   
+    }
+    
+    public boolean isWithinBounds(int x, int y) {
+        return x >= 0 && x <= maxX && y >= 0 && y <= maxY;
+    }
 }

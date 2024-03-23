@@ -67,8 +67,16 @@ public class Mower {
             default -> throw new OrientationInvlidException("Orientation invalide: " + orientation);
         };
         
-        x = Math.min(Math.max(x, 0), lawn.getMaxX());
-        y = Math.min(Math.max(y, 0), lawn.getMaxY());
+        
+        if (lawn.isWithinBounds(x, y)) {
+            x = x+1;
+            y = y+1;
+        }
+        
+		/*
+		 * x = Math.min(Math.max(x, 0), lawn.getMaxX()); y = Math.min(Math.max(y, 0),
+		 * lawn.getMaxY());
+		 */
     }
 
 
