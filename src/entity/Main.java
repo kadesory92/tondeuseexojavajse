@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import exception.EntityFileNotFound;
 import exception.FileNotFoundException;
 
 public class Main {
@@ -40,14 +39,14 @@ public class Main {
 
     }
 
-    private static Lawn parseLawn(String line) {
+    public static Lawn parseLawn(String line) {
         String[] tokens = line.split(" ");
         int maxX = Integer.parseInt(tokens[0]);
         int maxY = Integer.parseInt(tokens[1]);
         return new Lawn(maxX, maxY);
     }
 
-    private static Mower parseMower(String line) {
+    public static Mower parseMower(String line) {
         String[] tokens = line.split(" ");
         int x = Integer.parseInt(tokens[0]);
         int y = Integer.parseInt(tokens[1]);

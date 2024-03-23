@@ -43,8 +43,8 @@ public class MainTest {
         assertEquals(expectedOutput.trim(), output.trim());
     }
 
-    private String captureOutput(Runnable runnable) {
-        // Capture System.out.println output
+    public String captureOutput(Runnable runnable) {
+    	// Capture System.out.println output
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -54,7 +54,25 @@ public class MainTest {
         // Reset System.out
         System.setOut(System.out);
 
-        return outContent.toString().trim();
+        // Get the captured output and remove empty lines
+        String output = outContent.toString().trim();
+        output = output.replaceAll("(?m)^[ \t]*\r?\n", "");
+
+        return output;
+
     }
+    
+    
+	/*
+	 * public String captureOutput(Runnable runnable) { // Capture
+	 * System.out.println output ByteArrayOutputStream outContent = new
+	 * ByteArrayOutputStream(); System.setOut(new PrintStream(outContent));
+	 * 
+	 * // Run the method runnable.run();
+	 * 
+	 * // Reset System.out System.setOut(System.out);
+	 * 
+	 * return outContent.toString().trim(); }
+	 */
 }
 
