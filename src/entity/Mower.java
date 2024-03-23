@@ -10,6 +10,18 @@ public class Mower {
         this.y = y;
         this.orientation = orientation;
     }
+    
+    public int getX() {
+    	return x;
+    }
+    
+    public int getY() {
+    	return y;
+    }
+    
+    public char getOrientation() {
+    	return orientation;
+    }
 
     public void executeInstructions(String instructions, Lawn lawn) {
     	instructions.chars()
@@ -24,7 +36,7 @@ public class Mower {
 
     }
     
-    private void rotateLeft() {
+    public void rotateLeft() {
         orientation = switch (orientation) {
             case 'N' -> 'W';
             case 'E' -> 'N';
@@ -34,7 +46,7 @@ public class Mower {
         };
     }
 
-    private void rotateRight() {
+    public void rotateRight() {
         orientation = switch (orientation) {
             case 'N' -> 'E';
             case 'E' -> 'S';
@@ -44,7 +56,7 @@ public class Mower {
         };
     }
 
-    private void moveForward(Lawn lawn) {
+    public void moveForward(Lawn lawn) {
         switch (orientation) {
             case 'N' -> { if (y < lawn.getMaxY()) y++; }
             case 'E' -> { if (x < lawn.getMaxX()) x++; }
@@ -52,6 +64,9 @@ public class Mower {
             case 'W' -> { if (x > 0) x--; }
             default -> throw new IllegalArgumentException("Orientation invalide: " + orientation);
         };
+        
+        x = Math.min(Math.max(x, 0), lawn.getMaxX());
+        y = Math.min(Math.max(y, 0), lawn.getMaxY());
     }
 
 

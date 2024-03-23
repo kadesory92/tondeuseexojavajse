@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.EntityFileNotFound;
+import exception.FileNotFoundException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try {
         	// Data file path
             String pathFile = "src/input.txt";
@@ -28,18 +29,13 @@ public class Main {
                 mowers.add(mower);
             }
 
-			/*
-			 * for (Mower mower : mowers) { System.out.println(mower.getPosition()); }
-			 */
             mowers.stream().forEach(mower -> {
                 System.out.println(mower.getPosition());
             });
 
             reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (EntityFileNotFound e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            new FileNotFoundException("Fichier n'existe pas");
         }
 
     }
